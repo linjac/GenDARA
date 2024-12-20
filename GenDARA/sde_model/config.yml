@@ -1,0 +1,6 @@
+att_conf: onSpec
+features_set: all
+kernels: freq
+lr: 0.001
+n_grus: 2
+sr: 32000
