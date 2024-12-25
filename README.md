@@ -89,7 +89,7 @@ We used the C4DM RIR dataset. If you would like to re-train the provided SDE mod
 
 #### Download speech dataset (VCTK)
 
-We use the [VCTK for Voice Cloning](https://www.openslr.org/17/) speech dataset. You can download the VCTK dataset as follows.
+We use the [VCTK for Voice Cloning](https://datashare.ed.ac.uk/handle/10283/3443) speech dataset. You can download the VCTK dataset as follows.
 
 ```bash
 cd GenDARA/sde_model/data
