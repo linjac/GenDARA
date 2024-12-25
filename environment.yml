@@ -1,0 +1,13 @@
+name: gendara
+channels:
+  - conda-forge
+dependencies:
+  - pandas
+  - python=3.12
+  - librosa
+  - pytorch
+  - pytorch-lightning
+  - ipykernel
+  - wandb
+  - pip:
+      - torchlibrosa==0.1.0

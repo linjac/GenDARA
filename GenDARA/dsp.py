@@ -1,3 +1,4 @@
+# %%
 import pandas as pd
 import os
 import librosa as lb
@@ -183,3 +184,4 @@ def make_dataset_metadata(dataset_dir):
     df = pd.DataFrame({'filename': filename, 'dist_gt': dist_gt})
     df.to_csv(os.path.join(dataset_dir, 'meta.csv'))
     
+# %%
