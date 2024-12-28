@@ -2,6 +2,7 @@ import torch
 from torch.utils.data import DataLoader, Dataset
 import os
 import numpy as np
+import pandas as pd
 import librosa as lb
 import matplotlib.pyplot as plt
 from pytorch_lightning import LightningDataModule
@@ -26,7 +27,7 @@ class SdeDataset(Dataset):
 
         self.sr = sr
         self.duration = duration # duration of the reverberant signal in seconds
-        self.meta_df=df
+        self.meta_df = df
         if 'convolved_filename' in self.meta_df.columns:
             self.convolved = {} 
         self.filters = {}

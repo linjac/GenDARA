@@ -1,0 +1,1 @@
+Put generated augmented RIR .wav files here. Refer to them in ../meta_train.csv and ../meta_val.csv

@@ -9,5 +9,6 @@ dependencies:
   - pytorch-lightning
   - ipykernel
   - wandb
+  - resampy
   - pip:
       - torchlibrosa==0.1.0

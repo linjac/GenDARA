@@ -1,0 +1,2 @@
+roomID,receiverType,label_r,x_r,y_r,z_r,sourceType,label_s,x_s,y_s,z_s,dist_gt,filename,split
+Room_18,Mono,Receiver_35,1.1883,5.3836,0.9,Omni,Source_0,-0.8117,-1.6164,1.9,7.3484692283495345,Room_18_Source_0_Receiver_35_GWA_IR_SC.wav,enrollment_2

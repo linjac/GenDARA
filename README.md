@@ -41,7 +41,7 @@ For Rooms 1-10, for each room we provide:
 
 For Rooms 11-20, for each room we provide:
 
-- 5 single-channel RIRs
+- 5+ single-channel RIRs
 - labeled source + receiver positions in `meta.csv`
 
 Additionally, we provide a control set of RIRs in Room_0 `enrollment_data/Room_0_data` for participants to calibrate their systems on the RIRs recorded in the real room as necessary. Room_0 is a physical room at Treble's offices with variable wall absorption and furniture layout. 20 single-channel RIRs were measured in Room_0, and their simulated counterparts (same source and receiver positions) generated from Treble's RIR simulator are provided. Also, a grid of virtual receivers were simulated and those simulated RIRs are provided:
@@ -92,9 +92,7 @@ We used the C4DM RIR dataset. If you would like to re-train the provided SDE mod
 We use the [VCTK for Voice Cloning](https://datashare.ed.ac.uk/handle/10283/3443) speech dataset. You can download the VCTK dataset as follows.
 
 ```bash
-cd GenDARA/sde_model/data
 wget https://datashare.ed.ac.uk/download/DS_10283_3443.zip
-unzip DS_10283_3443.zip && rm DS_10283_3443.zip
 ```
 
 We set aside 4 speakers from the VCTK dataset. **To have a fair evaluation, please do not use the test set of VCTK speakers when fine-tuning this SDE model.** The speaker IDs are:

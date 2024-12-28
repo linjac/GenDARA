@@ -13,7 +13,7 @@ from torch.utils.data import DataLoader
 if __name__ == "__main__":
     # add argumense to the script
     parser = argparse.ArgumentParser(description='Train the SDE model on the participant augmented RIR dataset')
-    parser.add_argument('--gpus', type=int, nargs='+', default=[6, 7], help='List of GPUs to use for training')
+    parser.add_argument('--gpus', type=int, nargs='+', default=[6], help='List of GPUs to use for training')
     parser.add_argument('--seed', type=int, default=42, help='Seed for the random number generators')
     parser.add_argument('--deterministic', type=bool, help='Whether to set the random number generators to be deterministic')
     parser.add_argument('--checkpoint', type=str, default='baseline.ckpt', help='Path to a checkpoint to load the model from. Default is the baseline model')
@@ -23,13 +23,13 @@ if __name__ == "__main__":
     
     ########### Training variables and params ###########
     
-    data_dir = './data'
+    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
     path_audios = os.path.join(data_dir, 'augmented_rirs')
     path_speech = os.path.join(data_dir, 'VCTK-Corpus' )
     path_dataset_splits = data_dir
     
     config = {
-    "max_epochs": 60, #50
+    "max_epochs": 2, #50
     "batch_size": 16,
     "lr": 0.001,
     "sampling_frequency": 32000,
@@ -53,35 +53,44 @@ if __name__ == "__main__":
     features = config['features_set']
     att_conf = config['att_conf']
     
-    dfs = { "train": pd.read_csv(os.path.join(path_dataset_splits, "meta_train.csv")),
-            "val": pd.read_csv(os.path.join(path_dataset_splits, "meta_val.csv")),
-            "test": pd.read_csv(os.path.join(path_dataset_splits, "meta_test.csv")),
+    dfs_paths = {"train": os.path.join(path_dataset_splits, "meta_train.csv"),
+                "val": os.path.join(path_dataset_splits, "meta_val.csv"),
+                "test": os.path.join(path_dataset_splits, "meta_val.csv"),
     }
+
     path_speech = { "train": os.path.join(path_speech, 'train'),
                     "val": os.path.join(path_speech, 'val_test'),
-                    "test": os.path.join(path_speech, 'val_test'),
+                    "test": os.path.join(path_speech, 'val_test')
                    } 
     
     # Check if the files exist
     if os.path.isdir(path_audios) == False:
         raise ValueError(f"Directory {path_audios} does not exist")
-    for w in ["train", "val", "test"]:
-        p = os.path.join(path_dataset_splits, "meta_" + w + ".csv")
-        if not os.path.isfile(p):
-            raise ValueError(f"File {p} does not exist")
+    for _, v in dfs_paths.items():
+        print(v)
+        if v is not None:
+            if not os.path.isfile(v):
+                raise ValueError(f"File {v} does not exist")
     for d in path_speech.values():
         if not os.path.isdir(d):
             raise ValueError(f"Directory {d} does not exist")
     
+    # pass an empty dataframe if the val is None
+    dfs = { key: pd.read_csv(val) if val is not None else pd.DataFrame() for key, val in dfs_paths.items() }
+    
     ################ Train the model ################
     seed_everything(42) # workers=True
     
-    run_name = "{}_Epochs_{}".format(args.condition, config["max_epochs"])
+    run_name = "SDE_Epochs_{}".format(config["max_epochs"])
 
-    model = SdeTrainer(sr=config['sampling_frequency'], lr=config["lr"], kernels=kernel, n_grus=n_gru, features_set=features, att_conf=att_conf)
-    if args.checkpoint is not None:
-        model = model.load_from_checkpoint(args.checkpoint)
-    
+    if args.checkpoint is None:
+        model = SdeTrainer(sr=config['sampling_frequency'], lr=config["lr"], kernels=kernel, n_grus=n_gru, features_set=features, att_conf=att_conf)
+    elif args.checkpoint == 'baseline.ckpt':
+        args.checkpoint = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'baseline.ckpt')
+        model = SdeTrainer.load_from_checkpoint(sr=config['sampling_frequency'], lr=config["lr"], kernels=kernel, n_grus=n_gru, features_set=features, att_conf=att_conf, checkpoint_path=args.checkpoint)
+    else:
+        model = SdeTrainer.load_from_checkpoint(sr=config['sampling_frequency'], lr=config["lr"], kernels=kernel, n_grus=n_gru, features_set=features, att_conf=att_conf, checkpoint_path=args.checkpoint)
+
     datamodule = SdeDataModule(path_audios, 
                                 path_speech, 
                                 dfs,
