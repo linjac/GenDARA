@@ -13,6 +13,8 @@ We provide baseline experiments using an open-source SDE model to encourage part
 
 Participation is open to all. Participants are asked to participate in both tasks rather than choosing one of the two tasks since our challenge aims to evaluate the effectiveness of generated RIRs for the downstream SDE problem.
 
+**For the technical details and experimental results, please refer to our [paper](https://minjekim.com/wp-content/uploads/icasspw2025_jlin.pdf).**
+
 ![Challenge Overview Figure](figs/challenge_overview.png)
 _Figure 1: Overview of the GenDARA 2025 Challenge tasks and workflow._
   
@@ -196,6 +198,21 @@ Participants are asked to submit a minimum two-page (but not exceeding four page
 - **Dec. 23, 2024:** Submission system open
 - **March 12, 2025:** Deadline to submit the participating system (a two-page summary and submission files)
 - Challenge results will be posted on the website in early **April in 2025** (before the beginning of the conference)
+
+# Cite Our Work
+If you’d like to refer to the challenge or use it in your research, please cite our paper:
+
+- Jackie Lin, Georg Götz, Hermes Sampedro Llopis, Haukur Hafsteinsson, Steinar Guðjónsson, Daniel Gert Nielsen, Finnur Pind, Paris Smaragdis, Dinesh Manocha, John Hershey, Trausti Kristjansson, and Minje Kim, “**Generative Data Augmentation Challenge: Synthesis of Room Acoustics for Speaker Distance Estimation**,” in Proceedings of the IEEE International Conference on Acoustics, Speech, and Signal Processing Workshops (ICASSPW): Generative Data Augmentation for Real-World Signal Processing Applications (GenDA 2025), Hyderabad, India, Apr. 6-11, 2025. [PDF](https://minjekim.com/wp-content/uploads/icasspw2025_jlin.pdf)
+
+BibTeX:
+```
+@inproceedings{GenDA2025_RoomAcoustics,
+  title={Generative Data Augmentation Challenge: Synthesis of Room Acoustics for Speaker Distance Estimation},
+  author={Jackie Lin and Georg G\"otz and Hermes Sampedro Llopis and Haukur Hafsteinsson and Steinar Gu{\dh}j\'onsson and Daniel Gert Nielsen and Finnur Pind and Paris Smaragdis and Dinesh Manocha and John Hershey and Trausti Kristjansson and Minje Kim},
+  booktitle={IEEE International Conference on Acoustics, Speech and Signal Processing Workshops(ICASSPW)},
+  year={2025}
+}
+```
 
 # References
 

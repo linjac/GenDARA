@@ -53,6 +53,7 @@ Room_11,Mono,Receiver_12,-1.0354,0.3527,0.9,Omni,Source_0,0.9646,1.3527,1.9,2.44
 Room_11,Mono,Receiver_12,-1.0354,0.3527,0.9,Omni,Source_1,-0.0354,2.3527,1.9,2.449489742783178,Room_11_Source_1_Receiver_12_GWA_IR_SC.wav,enrollment_1
 Room_11,Mono,Receiver_14,0.9646,0.3527,0.9,Omni,Source_0,0.9646,1.3527,1.9,1.414213562373095,Room_11_Source_0_Receiver_14_GWA_IR_SC.wav,enrollment_1
 Room_11,Mono,Receiver_14,0.9646,0.3527,0.9,Omni,Source_1,-0.0354,2.3527,1.9,2.449489742783178,Room_11_Source_1_Receiver_14_GWA_IR_SC.wav,enrollment_1
+Room_11,Mono,Receiver_17,-0.0354,0.3527,1.9,Omni,Source_1,-0.0354,2.3527,1.9,2.0,Room_11_Source_1_Receiver_17_GWA_IR_SC.wav,enrollment_1
 Room_12,Mono,Receiver_2,-0.1357,-3.5611,0.9993,Omni,Source_0,-1.1357,-3.5611,1.9993,1.4142135623730951,Room_12_Source_0_Receiver_2_GWA_IR_SC.wav,enrollment_2
 Room_12,Mono,Receiver_2,-0.1357,-3.5611,0.9993,Omni,Source_1,-2.1357,-3.5611,1.9993,2.23606797749979,Room_12_Source_1_Receiver_2_GWA_IR_SC.wav,enrollment_2
 Room_12,Mono,Receiver_3,-0.1357,-3.5611,1.9993,Omni,Source_0,-1.1357,-3.5611,1.9993,1.0,Room_12_Source_0_Receiver_3_GWA_IR_SC.wav,enrollment_2
